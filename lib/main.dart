@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rhc/shared/themes/app_colors.dart';
 import 'package:rhc/shared/themes/app_text_styles.dart';
+
+import 'modules/perfil/perfil.dart';
+import 'modules/perfil/perfil2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      // title: 'Flutter Demo',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      home: MyHomePage(),
     );
   }
 }
@@ -27,9 +28,9 @@ class MyApp extends StatelessWidget {
 ////////////////////////////////////
 
 class MyHomePage extends StatefulWidget {
-  final String title;
-
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -40,7 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
- 
     return Row(
       children: [
         Drawer(
@@ -183,7 +183,141 @@ class _MyHomePageState extends State<MyHomePage> {
         Expanded(
           child: Scaffold(
             appBar: AppBar(
-              title: Text(widget.title),
+              title: Column(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        "../assets/logo-brisanet.png",
+                        height: 40,
+                        width: 40,
+                      ),
+                      Text("RH", style: TextStyle(color: Colors.orange)),
+                      Text("CONECTA",
+                          style: TextStyle(
+                              color: AppColors.select,
+                              fontWeight: FontWeight.w900)),
+                    ],
+                  ),
+                ],
+              ),
+              actions: [
+                Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("HOMEOFFICE/COVID-19",
+                            style: TextStyle(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(Icons.bug_report, color: Colors.black),
+                            Text("REPORTAR BUG",
+                                style: TextStyle(color: Colors.black)),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(children: [
+                          IconButton(
+                            iconSize: 30,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
+                            icon: Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {},
+                          ),
+                          Positioned(
+                            top: 1,
+                            right: 13,
+                            child: Container(
+                              padding: EdgeInsets.all(1),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              constraints: BoxConstraints(
+                                minWidth: 17,
+                                minHeight: 10,
+                              ),
+                              child: Text(
+                                '0',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        ]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(children: [
+                          IconButton(
+                            iconSize: 30,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
+                            icon: Icon(
+                              Icons.house_siding_outlined,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {},
+                          ),
+                          Positioned(
+                            top: 1,
+                            right: 13,
+                            child: Container(
+                              padding: EdgeInsets.all(1),
+                              decoration: new BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              constraints: BoxConstraints(
+                                minWidth: 17,
+                                minHeight: 10,
+                              ),
+                              child: Text(
+                                '0',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        ]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(Icons.home, color: Colors.black),
+                            Text("INÍCIO",
+                                style: TextStyle(color: Colors.black)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
               backgroundColor: Colors.white,
             ),
             body: GridView.count(
@@ -191,12 +325,10 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
               padding: EdgeInsets.all(20),
-              childAspectRatio: 3 / 2,
+              childAspectRatio: 2 / 2,
               children: [
-                Image.asset('assets/nav-drawer-1.jpg'),
-                Image.asset('assets/nav-drawer-2.jpg'),
-                Image.asset('assets/nav-drawer-3.jpg'),
-                Image.asset('assets/nav-drawer-4.jpg'),
+                // Perfil(),
+                Perfil2()
               ],
             ),
           ),
