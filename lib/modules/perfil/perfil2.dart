@@ -13,7 +13,7 @@ class _ExpansionPanelDemoState extends State<Perfil2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80), // here the desired height
+          preferredSize: Size.fromHeight(80),
           child: AppBar(
             title: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,6 +48,7 @@ class _ExpansionPanelDemoState extends State<Perfil2> {
                 children: [
                   ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
+                      // HEADER DO EXPANDED
                       return Container(
                         padding: EdgeInsets.only(
                           top: 12,
@@ -70,7 +71,7 @@ class _ExpansionPanelDemoState extends State<Perfil2> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    itemData[index].headerItem,
+                                    itemData[index].headerPanel,
                                     style: TextStyle(
                                       color: itemData[index].colorsItem,
                                       fontSize: 15,
@@ -83,23 +84,118 @@ class _ExpansionPanelDemoState extends State<Perfil2> {
                         ),
                       );
                     },
+
+                    // INFORMAÇÕES DO EXPANDED
                     body: Container(
                       padding: EdgeInsets.only(left: 10, right: 10, bottom: 20),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // DADOS PESSOAIS
                           Text(
-                            itemData[index].discription,
+                            itemData[index].emailPersonTitle,
                             style: TextStyle(
-                              color: Colors.grey[700],
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
                               fontSize: 15,
-                              height: 1.3,
                             ),
+                          ),
+                          Text(
+                            itemData[index].email,
+                            style: TextStyle(
+                              color: AppColors.items,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                itemData[index].homeAddress,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    itemData[index].cityPersonTitle,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text(
+                                    itemData[index].city,
+                                    style: TextStyle(
+                                      color: AppColors.items,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    itemData[index].districtPersonTitle,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text(
+                                    itemData[index].district,
+                                    style: TextStyle(
+                                      color: AppColors.items,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    itemData[index].addresPersonTitle,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text(
+                                    itemData[index].address,
+                                    style: TextStyle(
+                                      color: AppColors.items,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                     isExpanded: itemData[index].expanded,
-                  )
+                  ),
                 ],
                 expansionCallback: (int item, bool status) {
                   setState(() {
@@ -116,44 +212,57 @@ class _ExpansionPanelDemoState extends State<Perfil2> {
 
   List<ItemModel> itemData = <ItemModel>[
     ItemModel(
-      headerItem: 'Dados Pessoais',
-      discription:
-          "E-mail pessoal:",
+      headerPanel: 'Dados Pessoais',
       colorsItem: Colors.white,
-      address: "",
-      city: "",
-      district: "",
-      email: "",
+      homeAddress: 'Endereço Residencial',
+      address: 'Rua B, Bloco Z',
+      addresPersonTitle: 'Logradouro',
+      city: 'Pereiro-CE',
+      cityPersonTitle: 'Cidade - Estado',
+      district: 'Lagoa Nova',
+      districtPersonTitle: 'Bairro',
+      email: 'osvaldocrispim@grupobrisanet.com.br',
+      emailPersonTitle: 'E-mail Pessoal',
+      businessEmail: '',
+      businessEmailTitle: '',
+      company: '',
+      companyTitle: '',
+      immediateLeader: '',
+      immediateLeaderTitle: '',
+      informedArea: '',
+      informedAreaTitle: '',
+      informedSection: '',
+      informedSectionTitle: '',
+      informedSector: '',
+      informedSectorTitle: '',
     ),
+  ];
+
+  List<ItemModel> itemDataCompany = <ItemModel>[
     ItemModel(
-      headerItem: 'iOS',
-      discription:
-          "iOS is a mobile operating system created and developed by Apple Inc. exclusively for its hardware.",
+      headerPanel: 'Dados Empresariais',
       colorsItem: Colors.white,
-      address: "",
-      city: "",
-      district: "",
-      email: "",
-    ),
-    ItemModel(
-      headerItem: 'Windows',
-      discription:
-          "Microsoft Windows, commonly referred to as Windows, is a group of several proprietary graphical operating system families, all of which are developed and marketed by Microsoft. ",
-      colorsItem: Colors.white,
-      address: "",
-      city: "",
-      district: "",
-      email: "",
-    ),
-    ItemModel(
-      headerItem: 'Linux',
-      discription:
-          "Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system.",
-      colorsItem: Colors.white,
-      address: "",
-      city: "",
-      district: "",
-      email: "",
+      homeAddress: 'Endereço Residencial',
+      address: 'Rua B, Bloco Z',
+      addresPersonTitle: 'Logradouro',
+      city: 'Pereiro-CE',
+      cityPersonTitle: 'Cidade - Estado',
+      district: 'Lagoa Nova',
+      districtPersonTitle: 'Bairro',
+      email: 'osvaldocrispim@grupobrisanet.com.br',
+      emailPersonTitle: 'E-mail Pessoal',
+      businessEmail: '',
+      businessEmailTitle: '',
+      company: '',
+      companyTitle: '',
+      immediateLeader: '',
+      immediateLeaderTitle: '',
+      informedArea: '',
+      informedAreaTitle: '',
+      informedSection: '',
+      informedSectionTitle: '',
+      informedSector: '',
+      informedSectorTitle: '',
     ),
   ];
 }
