@@ -328,24 +328,35 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: const EdgeInsets.all(10),
                         child: Column(
                           children: [
-                            Container(
-                              height: 700,
-                              width: constraints.maxWidth * 0.73,
-                              child: Center(child: Perfil()),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 600,
+                                  width: constraints.maxWidth * 0.73,
+                                  child: Perfil(),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: constraints.maxWidth * 0.24,
+                                    child: CardPerfil(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          width: constraints.maxWidth * 0.24,
-                          height: constraints.maxHeight,
-                          child: Center(
-                            child: PerfilTeste(),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(10),
+                      //   child: Container(
+                      //     width: constraints.maxWidth * 0.24,
+                      //     height: constraints.maxHeight,
+                      //     child: Center(
+                      //       child: CardPerfil(),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   );
                 }
@@ -365,8 +376,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.all(10),
                       child: Container(
                         height: constraints.maxHeight - 400,
-                        color: Colors.lightGreen,
-                        child: Center(child: PerfilTeste()),
+                        width: constraints.maxWidth - 400,
+                        child: Center(child: CardPerfil()),
                       ),
                     )
                   ],

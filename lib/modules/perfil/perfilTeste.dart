@@ -1,111 +1,138 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:rhc/shared/themes/app_colors.dart';
 
-void main() => runApp(const PerfilTeste());
-
-class PerfilTeste extends StatelessWidget {
-  const PerfilTeste({Key? key}) : super(key: key);
-
-  static const String _title = 'Flutter Code Sample';
+class CardPerfil extends StatefulWidget {
+  const CardPerfil({Key? key}) : super(key: key);
 
   @override
+  State<CardPerfil> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<CardPerfil> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80), // here the desired height
-            child: AppBar(
-              title: Column(
+    return Center(
+      child: SizedBox(
+        child: Card(
+          elevation: 2,
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: const CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage("../assets/perfil.jpeg"),
+                ),
+              ),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Text(
-                    "Perfil",
-                    style: TextStyle(color: Colors.white),
+                    "OSVALDO TOMAZ CRISPIM FILHO",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                   ),
                   Text(
-                    "Dados do colaborador",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w100),
-                  )
+                    "Osvaldo Crispim",
+                    style: TextStyle(fontSize: 15, color: AppColors.items),
+                  ),
                 ],
               ),
-              backgroundColor: AppColors.select,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
-            )),
-        body: const MyStatefulWidget(),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                          text: "Número da Matrícula: ",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w900),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '001078',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.items,
+                                  fontWeight: FontWeight.normal),
+                            )
+                          ]),
+                    ),
+                    const SizedBox(height: 5),
+                    RichText(
+                      text: TextSpan(
+                          text: "Função Informada: ",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w900),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'COORDENADOR DE TECNOLOGIA DA INFORMAÇÃO',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.items,
+                                  fontWeight: FontWeight.normal),
+                            )
+                          ]),
+                    ),
+                    const SizedBox(height: 5),
+                    RichText(
+                      text: TextSpan(
+                          text: "Área Informada: ",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w900),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'SUPORTE ADMINISTRATIVO',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.items,
+                                  fontWeight: FontWeight.normal),
+                            )
+                          ]),
+                    ),
+                    const SizedBox(height: 5),
+                    RichText(
+                      text: TextSpan(
+                          text: "Setor Informado: ",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w900),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'GESTÃO DE OPERAÇÕES DE TI',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.items,
+                                  fontWeight: FontWeight.normal),
+                            )
+                          ]),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const SizedBox(width: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Respond to button press
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green,
+                          ),
+                          child: Text('EDITAR DADOS'),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-
-// stores ExpansionPanel state information
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    this.isExpanded = false,
-  });
-
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
-}
-
-List<Item> generateItems(int numberOfItems) {
-  return List<Item>.generate(numberOfItems, (int index) {
-    return Item(
-      headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
-    );
-  });
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  final List<Item> _data = generateItems(8);
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: _buildPanel(),
-      ),
-    );
-  }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _data[index].isExpanded = !isExpanded;
-        });
-      },
-      children: _data.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: ListTile(title: Text("data")),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
-  }
-
-  
-}
-
