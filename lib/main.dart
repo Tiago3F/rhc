@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rhc/modules/perfil/perfil.dart';
-import 'package:rhc/modules/perfil/perfilTeste.dart';
+import 'package:rhc/modules/perfil/expansion_panel_perfil.dart';
+import 'package:rhc/modules/perfil/card_perfil.dart';
 import 'package:rhc/shared/themes/app_colors.dart';
 import 'package:rhc/shared/themes/app_text_styles.dart';
 
@@ -333,7 +333,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Container(
                                   height: 600,
                                   width: constraints.maxWidth * 0.73,
-                                  child: Perfil(),
+                                  child: ExpansionPanelPerfil(),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -369,7 +369,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         height: 300,
                         color: Colors.amber,
-                        child: Center(child: Perfil()),
+                        child: Center(child: ExpansionPanelPerfil()),
                       ),
                     ),
                     Padding(

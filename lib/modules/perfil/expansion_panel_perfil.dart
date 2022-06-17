@@ -3,12 +3,12 @@ import 'package:rhc/modules/perfil/item_model.dart';
 
 import '../../shared/themes/app_colors.dart';
 
-class Perfil extends StatefulWidget {
+class ExpansionPanelPerfil extends StatefulWidget {
   @override
   _ExpansionPanelDemoState createState() => _ExpansionPanelDemoState();
 }
 
-class _ExpansionPanelDemoState extends State<Perfil> {
+class _ExpansionPanelDemoState extends State<ExpansionPanelPerfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
